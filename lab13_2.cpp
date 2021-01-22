@@ -22,22 +22,25 @@ int main(){
 
 
 void inputMatrix(double source[][N]){
-	int a,b,c,d,e;
+	
 	for (int i=0;i<N;i++){
 		cout << "Row " << i+1 << ": ";
-		cin << a << b << c << d << e;
-		for (int j=0;j<N;j++) source[i][j]=a;
+		for (int j=0;j<N;j++)cin >> source[i][j];
 	}
-
-
+	
 }
 
-void findLocalMax(const double source[][N], bool result[][N]){
 
-
-
-
+void findLocalMax(const double s[][N], bool result[][N]){
+	for(int i=0;i<N;i++){
+		for(int j=0;j<N;j++){
+			if (i==0 || j==0 || i==4 || j==4) result[i][j]=0;
+			else if (s[i][j]>=s[i-1][j] && s[i][j]>=s[i+1][j] && s[i][j]>=s[i][j-1] && s[i][j]>=s[i][j+1]) result[i][j]=1;
+			else result[i][j]=0;
+		}
+	}
 }
+
 
 void showMatrix(const bool source[][N]){
 	for (int i=0;i<N;i++){
